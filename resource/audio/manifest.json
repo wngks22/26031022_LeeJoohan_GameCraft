@@ -1,0 +1,119 @@
+{
+  "source": "Original synthesized test audio; tools/build_audio.py",
+  "format": "PCM16 mono WAV",
+  "clips": {
+    "bgm_menu": {
+      "file": "audio/bgm/bgm_menu.wav",
+      "seconds": 26.666666666666668,
+      "peak": 0.65,
+      "sample_rate": 22050,
+      "loop": true
+    },
+    "bgm_combat": {
+      "file": "audio/bgm/bgm_combat.wav",
+      "seconds": 17.142857142857142,
+      "peak": 0.65,
+      "sample_rate": 22050,
+      "loop": true
+    },
+    "magic_bolt": {
+      "file": "audio/sfx/magic_bolt.wav",
+      "seconds": 0.22,
+      "peak": 0.549957,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "scythe": {
+      "file": "audio/sfx/scythe.wav",
+      "seconds": 0.3,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "lightning": {
+      "file": "audio/sfx/lightning.wav",
+      "seconds": 1.0499773242630386,
+      "peak": 0.504,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "fire_area": {
+      "file": "audio/sfx/fire_area.wav",
+      "seconds": 4.0,
+      "peak": 0.45,
+      "sample_rate": 22050,
+      "loop": true,
+      "notes": "Continuous low flame rush; no crackles; same audio at every weapon level."
+    },
+    "enemy_hit": {
+      "file": "audio/sfx/enemy_hit.wav",
+      "seconds": 0.08997732426303855,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "enemy_death": {
+      "file": "audio/sfx/enemy_death.wav",
+      "seconds": 0.24,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "player_hit": {
+      "file": "audio/sfx/player_hit.wav",
+      "seconds": 0.19002267573696144,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "player_death": {
+      "file": "audio/sfx/player_death.wav",
+      "seconds": 1.7,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "experience": {
+      "file": "audio/sfx/experience.wav",
+      "seconds": 0.14,
+      "peak": 0.14,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "level_up": {
+      "file": "audio/sfx/level_up.wav",
+      "seconds": 1.2499773242630385,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "boss_spawn": {
+      "file": "audio/sfx/boss_spawn.wav",
+      "seconds": 1.8,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "boss_death": {
+      "file": "audio/sfx/boss_death.wav",
+      "seconds": 1.5,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "menu_move": {
+      "file": "audio/sfx/menu_move.wav",
+      "seconds": 0.47002267573696144,
+      "peak": 0.3,
+      "sample_rate": 22050,
+      "loop": false
+    },
+    "menu_confirm": {
+      "file": "audio/sfx/menu_confirm.wav",
+      "seconds": 0.6300226757369615,
+      "peak": 0.55,
+      "sample_rate": 22050,
+      "loop": false
+    }
+  }
+}
