@@ -1,10 +1,11 @@
-abstract class SceneBase
+﻿abstract class SceneBase
 {
 	private readonly List<GameObject> _objects = new List<GameObject>();
 	private readonly List<GameObject> _pendingAdd = new List<GameObject>();
 	private readonly List<GameObject> _pendingRemove = new List<GameObject>();
 	private bool _isExiting;
 	private bool _worldUpdated;
+	private readonly List<GameObject> _drawing = new List<GameObject>();
 
 	public Camera? MainCamera { get; protected set; }
 	public int ObjectCount => _objects.Count;
@@ -102,7 +103,33 @@ abstract class SceneBase
 	public virtual void Render()
 	{
 		if (MainCamera == null) return;
-		foreach (GameObject gameObject in _objects) gameObject.Render(MainCamera);
+		_drawing.Clear();
+		foreach (GameObject gameObject in _objects)
+		{
+			if (gameObject.ActiveSelf && !gameObject.IsDestroyed) _drawing.Add(gameObject);
+		}
+		_drawing.Sort(CompareDrawing);
+		foreach (GameObject gameObject in _drawing) gameObject.Render(MainCamera);
+	}
+
+	private int CompareDrawing(GameObject a, GameObject b)
+	{
+		Renderer? first = a.GetRenderer();
+		Renderer? second = b.GetRenderer();
+		int layerA = first == null ? 0 : first.SortingLayer;
+		int layerB = second == null ? 0 : second.SortingLayer;
+		int result = layerA.CompareTo(layerB);
+		if (result != 0) return result;
+		int orderA = first == null ? 0 : first.Order;
+		int orderB = second == null ? 0 : second.Order;
+		result = orderA.CompareTo(orderB);
+		if (result != 0) return result;
+		if (layerA == 3)
+		{
+			result = a.Transform.Y.CompareTo(b.Transform.Y);
+			if (result != 0) return result;
+		}
+		return a.Id.CompareTo(b.Id);
 	}
 
 	public virtual void Exit()
@@ -114,6 +141,7 @@ abstract class SceneBase
 		List<GameObject> disposing = new List<GameObject>(_objects);
 		disposing.AddRange(_pendingAdd);
 		_objects.Clear();
+		_drawing.Clear();
 		_pendingAdd.Clear();
 		_pendingRemove.Clear();
 		MainCamera = null;

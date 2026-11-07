@@ -1,4 +1,4 @@
-class GameObject : GameFramework.Object, IDisposable
+﻿class GameObject : GameFramework.Object, IDisposable
 {
 	private readonly List<Component> _components = new List<Component>();
 	private bool _initialized;
@@ -7,6 +7,15 @@ class GameObject : GameFramework.Object, IDisposable
 	public Transform Transform { get; }
 	public SceneBase? Scene { get; internal set; }
 	public bool ActiveSelf { get; private set; } = true;
+
+	internal Renderer? GetRenderer()
+	{
+		foreach (Component component in _components)
+		{
+			if (component is Renderer renderer) return renderer;
+		}
+		return null;
+	}
 
 	public GameObject(string name)
 	{
@@ -125,9 +134,9 @@ class GameObject : GameFramework.Object, IDisposable
 		if (!ActiveSelf || IsDestroyed) return;
 		foreach (Component component in _components)
 		{
-			if (component is Behaviour behaviour && behaviour.Enabled)
+			if (component is Renderer renderer && renderer.Enabled)
 			{
-				behaviour.Render(camera);
+				renderer.Render(camera);
 			}
 		}
 	}

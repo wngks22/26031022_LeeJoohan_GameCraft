@@ -38,9 +38,9 @@ class Animator : MonoBehaviour
 		// 단순 정지는 IsPlaying만 바꾸므로 현재 프레임과 시간을 보존합니다.
 		if (!IsPlaying || IsFinished) return;
 		_elapsed += deltaTime;
-		while (_elapsed >= _clip.FrameSeconds)
+		while (_elapsed >= _clip.GetDuration(FrameIndex))
 		{
-			_elapsed -= _clip.FrameSeconds;
+			_elapsed -= _clip.GetDuration(FrameIndex);
 			if (FrameIndex + 1 < _clip.FrameCount)
 			{
 				FrameIndex++;

@@ -25,19 +25,22 @@ abstract class MenuScene : SceneBase
 	protected override void UpdateInput(float deltaTime)
 	{
 		G2InputContext input = Game.Input;
-		if (input.IsKeyDown(Keys.Up) || input.IsKeyDown(Keys.Down)) Selected = 1 - Selected;
+		if (input.IsKeyDown(Keys.Up) || input.IsKeyDown(Keys.Down))
+		{
+			Selected = 1 - Selected; Game.MenuAudio.Play("menu_move");
+		}
 		for (int i = 0; i < 2; i++)
 		{
 			float y = ButtonY + i * 68;
 			if (input.MousePosition != _previousMouse && UI.IsHovered(input, 640, y)) Selected = i;
 			if (UI.IsClicked(input, 640, y))
 			{
-				Activate(i);
+				Game.MenuAudio.Play("menu_confirm"); Activate(i);
 				return;
 			}
 		}
 		_previousMouse = input.MousePosition;
-		if (input.IsKeyDown(Keys.Enter)) Activate(Selected);
+		if (input.IsKeyDown(Keys.Enter)) { Game.MenuAudio.Play("menu_confirm"); Activate(Selected); }
 	}
 
 	protected abstract void Activate(int index);

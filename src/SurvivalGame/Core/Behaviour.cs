@@ -1,4 +1,4 @@
-abstract class Behaviour : Component
+﻿abstract class Behaviour : Component
 {
 	private bool _enabled = true;
 
@@ -13,7 +13,4 @@ abstract class Behaviour : Component
 		}
 	}
 
-	public virtual void Render(Camera camera)
-	{
-	}
 }

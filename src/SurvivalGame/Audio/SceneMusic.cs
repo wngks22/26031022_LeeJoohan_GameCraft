@@ -1,13 +1,14 @@
 class SceneMusic : IDisposable
 {
-	private G2AudioSound? _sound;
+	private GameSound? _sound;
 	public void Play(string path)
 	{
 		Dispose();
 		G2AudioContext? audio = G2AudioContext.Instance;
 		if (audio == null || audio.Audio == null) return;
-		_sound = new G2AudioSound(path);
-		if (audio.MasteringVoice != null) audio.MasteringVoice.SetVolume(0.25f);
+		_sound = new GameSound(path);
+		if (audio.MasteringVoice != null) audio.MasteringVoice.SetVolume(1);
+		_sound.SetVolume(0.25f);
 		_sound.Play(true);
 	}
 

@@ -1,7 +1,7 @@
-using Vortice.Direct2D1;
+﻿using Vortice.Direct2D1;
 using Vortice.Mathematics;
 
-class TiledBackground : Behaviour
+class TiledBackground : Renderer
 {
 	private readonly G2Texture _texture;
 	private const int TileSize = 64;

@@ -18,6 +18,12 @@ class GameManager
 	public int Level { get; private set; } = 1;
 	public int Kills { get; private set; }
 	public int BossKills { get; private set; }
+	public void LevelUp() { Level++; }
+	public void RecordKill(bool boss)
+	{
+		Kills++;
+		if (boss) BossKills++;
+	}
 
 	public void AddPlayTime(float deltaTime)
 	{

@@ -19,18 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\resource\image\background\terrain.png" Link="resource\image\background\terrain.png" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\resource\image\player\player_move.png" Link="resource\image\player\player_move.png" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\resource\audio\bgm\bgm_combat.wav" Link="resource\audio\bgm\bgm_combat.wav" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\resource\image\background\title_graveyard.png" Link="resource\image\background\title_graveyard.png" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\resource\image\ui\title_logo.png" Link="resource\image\ui\title_logo.png" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\resource\image\ui\menu_flame.png" Link="resource\image\ui\menu_flame.png" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\resource\audio\bgm\bgm_menu.wav" Link="resource\audio\bgm\bgm_menu.wav" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\resource\image\ui\text\*.png" Link="resource\image\ui\text\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\resource\image\**\*.png" Link="resource\image\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\resource\audio\**\*.wav" Link="resource\audio\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\resource\font\LICENSE.txt" Link="resource\font\LICENSE.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

@@ -10,6 +10,7 @@ class GameMain : G2AppBase
 	private SceneBase? _currentScene;
 	private SceneType? _requestedScene;
 	private readonly ResourceStore _resources = new ResourceStore();
+	public GameAudio MenuAudio { get; } = new GameAudio();
 
 	public override System.Drawing.Size ScreenSize => GameGlobal.ScreenSize;
 	public override string GameName => GameGlobal.GameName;
@@ -29,8 +30,10 @@ class GameMain : G2AppBase
 
 	protected override void Update()
 	{
-		if (_currentScene == null || System.Windows.Forms.Form.ActiveForm == null)
+		if (_currentScene == null) return;
+		if (System.Windows.Forms.Form.ActiveForm == null)
 		{
+			if (_currentScene is GameplayScene gameplay) gameplay.PauseForFocusLoss();
 			return;
 		}
 		// 창 이동이나 디버깅 뒤 큰 시간 차이로 한 번에 멀리 이동하지 않게 합니다.
@@ -80,6 +83,7 @@ class GameMain : G2AppBase
 			_currentScene = null;
 		}
 		_scenes.Clear();
+		MenuAudio.Dispose();
 		_resources.Dispose();
 		// 게임 리소스를 먼저 정리한 뒤 패키지의 그래픽·오디오 장치를 해제합니다.
 		base.Dispose();

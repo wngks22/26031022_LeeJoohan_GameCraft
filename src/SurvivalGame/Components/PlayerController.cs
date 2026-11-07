@@ -7,6 +7,9 @@ class PlayerController : MonoBehaviour
 	private Animator _animator = null!;
 
 	public float MoveSpeed { get; set; } = 180;
+	public float DirectionX { get; private set; } = 1;
+	public float DirectionY { get; private set; }
+	public bool FacingLeft { get; private set; }
 
 	public PlayerController(G2InputContext input)
 	{
@@ -46,6 +49,9 @@ class PlayerController : MonoBehaviour
 		// 대각선도 같은 속도로 월드 좌표에서 이동합니다. 화면 경계 제한은 없습니다.
 		directionX /= length;
 		directionY /= length;
+		DirectionX = directionX;
+		DirectionY = directionY;
+		if (directionX != 0) FacingLeft = directionX < 0;
 		Transform.X += directionX * MoveSpeed * deltaTime;
 		Transform.Y += directionY * MoveSpeed * deltaTime;
 		if (directionX < 0) _renderer.FlipX = true;
